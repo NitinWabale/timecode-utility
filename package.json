@@ -1,29 +1,35 @@
 {
-    "name": "timecode-utility",
-    "description": "A JavaScript module for timecode conversion",
-    "keywords": [
-        "timecode",
-        "utility"
-      ],
-    "homepage": "https://github.com/NitinWabale/timecode-utility",
-    "main": "./src/timecode-utility.js",
-    "version": "0.0.1",
-    "author": {
-      "name": "Nitin Wabale",
-      "email": "nitin.wabale@outlook.com"
-    },
-    "bugs": {
-      "url": "https://github.com/NitinWabale/timecode-utility/issues",
-      "email": "nitin.wabale@outlook.com"
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/NitinWabale/timecode-utility.git"
-    },
-    "scripts": {
-      "test": "nodeunit"
-    },
-    "devDependencies": {
-      "nodeunit": "*"
-    }
+  "name": "timecode-utility",
+  "description": "A JavaScript module for timecode conversion",
+  "keywords": [
+    "timecode",
+    "utility"
+  ],
+  "homepage": "https://github.com/NitinWabale/timecode-utility",
+  "main": "./src/timecode-utility.js",
+  "version": "0.0.1",
+  "author": {
+    "name": "Nitin Wabale",
+    "email": "nitin.wabale@outlook.com"
+  },
+  "bugs": {
+    "url": "https://github.com/NitinWabale/timecode-utility/issues",
+    "email": "nitin.wabale@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NitinWabale/timecode-utility.git"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "26.4.2",
+    "jest-canvas-mock": "^2.3.0",
+    "jest-cli": "26.2.2",
+    "@types/jest": "^26.0.20",
+    "ts-jest": "^26.5.2"
+  },
+  "dependencies": {
   }
+}

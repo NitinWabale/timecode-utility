@@ -1,0 +1,28 @@
+# Don't check auto-generated stuff into git
+coverage
+build
+node_modules
+stats.json
+app/testUtils/apiModels/
+
+# Cruft
+.DS_Store
+npm-debug.log
+newrelic_agent.log
+yarn-error.log
+.idea
+.env
+.vscode
+jsconfig.json
+version.yml
+
+#idea
+*.iml
+
+# swagger generated
+app/swagger
+
+# yalc
+.yalc
+yalc.lock
+.npmrc
