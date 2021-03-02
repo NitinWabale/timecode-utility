@@ -24,12 +24,13 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.20",
     "jest": "26.4.2",
     "jest-canvas-mock": "^2.3.0",
     "jest-cli": "26.2.2",
-    "@types/jest": "^26.0.20",
     "ts-jest": "^26.5.2"
   },
   "dependencies": {
+    "typescript": "^4.2.2"
   }
 }
