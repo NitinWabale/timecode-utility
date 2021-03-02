@@ -24,6 +24,19 @@ export const convertTimeCodeToFrames = (timecode: string, frameRate: number) => 
   };
 
   export const isValidTimeCode = (timecode: string) => {
+    // return true if it matches complete time code fomat like 10:23:23:00
+    if (timecode.match(/^([0-1]?[0-9]|[0-2]?[0-3]):([0-5]?[0-9]):([0-5]?[0-9])[:]([0-6]?[0-9])$/g)) return true;
+  
+    // return true if it matches complete time code fomat like 10:23:23
+    if (timecode.match(/^([0-1]?[0-9]|[0-2]?[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$/g)) return true;
+  
+    // return true if it matches complete time code fomat like 10:23
+    if (timecode.match(/^([0-5]?[0-9]):([0-5]?[0-9])$/g)) return true;
+  
+    // return valid if its like 234 or f1000 or 1000f
+    if (timecode.match(/^f[0-9]+$|^[0-9]+f$|^[0-9]+$/g)) return true;
+  
+    // other scenarios are invalid
     return false;
   };
   
