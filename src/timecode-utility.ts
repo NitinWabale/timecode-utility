@@ -41,7 +41,52 @@ export const convertTimeCodeToFrames = (timecode: string, frameRate: number) => 
   };
 
   export const formatTimeCode = (timecode: string, fps: number) => {
-
+    // format timecode if its valid
+    const isValid = isValidTimeCode(timecode);
+  
+    if (isValid) {
+      // check for values like f200 or 200f
+      if (timecode.includes('f')) {
+        // if starts with f then remove f and convert frames to time code
+        if (timecode.startsWith('f')) {
+          const frames = parseInt(timecode.replace('f', ''), 10);
+          return convertFramesToTimeCode(frames, fps);
+        }
+        // if ends with f then remove f and convert frames to time code
+        const frames = parseInt(timecode.replace('f', ''), 10);
+        return convertFramesToTimeCode(frames, fps);
+      }
+  
+      // check for :
+      if (timecode.includes(':')) {
+        // check for 4 : for format 00:12:12:00 or 0:2:2:00
+        if (timecode.match(/([0-1]?[0-9]|[0-2]?[0-3]):([0-5]?[0-9]):([0-5]?[0-9])[:]([0-6]?[0-9])$/) !== null) {
+          const parts = timecode.split(':');
+          return [
+            pad(Math.trunc(parseInt(parts[0], 10))),
+            pad(Math.trunc(parseInt(parts[1], 10))),
+            pad(Math.trunc(parseInt(parts[2], 10))),
+            pad(Math.trunc(parseInt(parts[3], 10))),
+          ].join(':');
+        }
+  
+        // check for 3 : for format 00:12:12 or 0:2:2
+        if (timecode.match(/^([0-1]?[0-9]|[0-2]?[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$/g) !== null) {
+          const parts = timecode.split(':');
+          return [
+            pad(Math.trunc(parseInt(parts[0], 10))),
+            pad(Math.trunc(parseInt(parts[1], 10))),
+            pad(Math.trunc(parseInt(parts[2], 10))),
+            pad(0),
+          ].join(':');
+        }
+  
+        // check for 2 : for format 00:12 or 0:2
+        const parts = timecode.split(':');
+        return [pad(0), pad(parseInt(parts[0], 10)), pad(parseInt(parts[1], 10)), pad(0)].join(':');
+      }
+      return [pad(0), pad(0), pad(parseInt(timecode, 10)), pad(0)].join(':');
+    }
     return timecode;
   };
   
