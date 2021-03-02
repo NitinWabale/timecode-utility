@@ -22,3 +22,8 @@ export const convertTimeCodeToFrames = (timecode: string, frameRate: number) => 
       pad(Math.trunc(frames % Math.trunc(fps))),
     ].join(':');
   };
+
+  export const isValidTimeCode = (timecode: string) => {
+    return false;
+  };
+  
