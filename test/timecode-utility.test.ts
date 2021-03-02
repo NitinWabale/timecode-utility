@@ -1,4 +1,4 @@
-import { isValidTimeCode, convertFramesToTimeCode, convertTimeCodeToFrames } from '../src/timecode-utility';
+import { isValidTimeCode, formatTimeCode, convertFramesToTimeCode, convertTimeCodeToFrames } from '../src/timecode-utility';
 
 test('convertFramesToTimeCode', () => {
     expect(convertFramesToTimeCode(100, 23.98)).toBe('00:00:04:08');
@@ -54,4 +54,29 @@ test('convertFramesToTimeCode', () => {
     expect(isValidTimeCode('10:#3:')).toBeFalsy();
     expect(isValidTimeCode('10:5$')).toBeFalsy();
     expect(isValidTimeCode('10:')).toBeFalsy();
+  });
+
+  test('formatTimeCode', () => {
+    expect(formatTimeCode('0', 24)).toBe('00:00:00:00');
+    expect(formatTimeCode('', 24)).toBe('');
+    expect(formatTimeCode('a', 24)).toBe('a');
+    expect(formatTimeCode('ff', 24)).toBe('ff');
+    expect(formatTimeCode('100#', 24)).toBe('100#');
+
+    expect(formatTimeCode('f100', 24)).toBe('00:00:04:04');
+    expect(formatTimeCode('100f', 24)).toBe('00:00:04:04');
+
+    expect(formatTimeCode('0', 24)).toBe('00:00:00:00');
+    expect(formatTimeCode('23', 24)).toBe('00:00:23:00');
+
+    expect(formatTimeCode('0:3:23:23', 24)).toBe('00:03:23:23');
+    expect(formatTimeCode('10:53:78:23', 24)).toBe('10:53:78:23');
+    expect(formatTimeCode('0:0:3:23', 24)).toBe('00:00:03:23');
+    expect(formatTimeCode('00:00:03', 24)).toBe('00:00:03:00');
+
+    expect(formatTimeCode('0:3', 24)).toBe('00:00:03:00');
+    expect(formatTimeCode('011:3', 24)).toBe('011:3');
+    expect(formatTimeCode('0:03', 24)).toBe('00:00:03:00');
+    expect(formatTimeCode('0:0:3:23', 24)).toBe('00:00:03:23');
+    expect(formatTimeCode('00:00:03', 24)).toBe('00:00:03:00');
   });

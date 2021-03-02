@@ -39,4 +39,10 @@ export const convertTimeCodeToFrames = (timecode: string, frameRate: number) => 
     // other scenarios are invalid
     return false;
   };
+
+  export const formatTimeCode = (timecode: string, fps: number) => {
+
+    return timecode;
+  };
+  
   
