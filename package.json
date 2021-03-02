@@ -6,7 +6,7 @@
     "utility"
   ],
   "homepage": "https://github.com/NitinWabale/timecode-utility",
-  "main": "./src/timecode-utility.js",
+  "main": "./src/timecode-utility.ts",
   "version": "0.0.1",
   "author": {
     "name": "Nitin Wabale",
